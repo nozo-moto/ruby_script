@@ -15,6 +15,29 @@ class Schedule
       puts "| making new file..."
     end
   end
+  def close_tasks
+    File.open("tasks.json", 'w') do |file|
+      JSON.dump(@tasks, file)
+    end
+    puts "save file..."
+  end
+  def add
+    result = ["| input task name:", "| When does it begin: ", "| any other memo:  "].map { |it|
+      print it
+      gets.chomp
+    }
+    @tasks.push({task: result[0], day: result[1], memo: result[2]})
+  end
+  def show_tasks
+    @tasks.map.with_index { |e, i|
+      puts "| | #{i} : #{e}"
+    }
+  end
+  def delete_task
+    show_tasks
+    print "| input : "
+    @tasks.delete_at(gets.chomp().to_i)
+  end
   def main
     loop do
       puts "| command => #{@commands}"
@@ -22,30 +45,14 @@ class Schedule
       command_input = gets.chomp()
       case command_input
       when 'exit'
-        File.open("tasks.json", 'w') do |file|
-          JSON.dump(@tasks, file)
-        end
-        puts "save file..."
+        close_tasks
         break
       when 'add'
-        print '| input task name: '
-        task = gets.chomp()
-        print '| When does it begin: '
-        day = gets.chomp()
-        print '| any other memo: '
-        memo = gets.chomp()
-        @tasks.push({task: task, day: day, memo: memo})
+        add
       when 'list'
-        @tasks.map.with_index { |e, i|
-          puts "| | #{i} : #{e}"
-        }
+        show_tasks
       when 'delete'
-        puts "| select number what you want to delete"
-        @tasks.map.with_index { |e, i|
-          puts "| | #{i} : #{e}"
-        }
-        print "| input : "
-        @tasks.delete_at(gets.chomp().to_i)
+        delete_task
       else
         puts "| Error\nThere is no command such as #{command_input}"
       end
