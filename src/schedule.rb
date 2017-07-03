@@ -1,11 +1,12 @@
 class Schedule
-  def initialize()
-    @commands = ['add', 'list', 'delete', 'exit']
+  def initialize(command_list, file_name)
+    @commands = command_list
     @tasks = []
+    @file_name = file_name
     open_tasks
   end
   def open_tasks
-    File.open(Command::FILE_NAME, 'r') do |file|
+    File.open(@file_name, 'r') do |file|
       @tasks = JSON.load(file)
     end
     if @tasks
@@ -16,7 +17,7 @@ class Schedule
     end
   end
   def close_tasks
-    File.open(Command::FILE_NAME, 'w') do |file|
+    File.open(@file_name, 'w') do |file|
       JSON.dump(@tasks, file)
     end
     puts "save file..."
