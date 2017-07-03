@@ -1,13 +1,13 @@
 class Commands
-  def initialize(commands)
-    @commands
+  def initialize
+    @commands = Command::COMMAND_LIST
   end
-  def schedule()
+  def schedule
     puts "---------------\t weather \t ----------"
     schedule = Schedule.new()
     schedule.main
   end
-  def weather()
+  def weather
     puts "---------------\t weather \t ----------"
     print "| input where\n| "
     api = WeatherAPI.new(OpenWeatherMap::KEY)

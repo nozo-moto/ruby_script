@@ -1,14 +1,14 @@
 require_relative './weather_api'
 require_relative './open_weather_map'
 require_relative './commands'
+require_relative './command'
 require_relative './schedule'
 
 if __FILE__ == $0
   puts "---------------\t Hello CalenderOfRuby \t ----------"
-  command_list = ['weather', 'schedule', 'exit']
   loop do
-    print "| commands => #{command_list.to_s}\n| input:\t"
-    command = Commands.new(command_list)
+    print "| commands => #{Command::COMMAND_LIST.to_s}\n| input:\t"
+    command = Commands.new()
     command_input = gets.chomp()
     case command_input
     when "exit"
