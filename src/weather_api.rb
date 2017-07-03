@@ -5,8 +5,8 @@ require_relative './weather'
 
 # Access for OpenWeatherMap API
 class WeatherAPI
-  def initialize(key)
-    @key = key
+  def initialize
+    @key = OpenWeatherMap::KEY
   end
 
   def weather(place)
@@ -25,6 +25,6 @@ class WeatherAPI
   private
 
   def query(place)
-    "?q=#{place},jp&APPID=#{OpenWeatherMap::KEY}"
+    "?q=#{place},jp&APPID=#{@key}"
   end
 end

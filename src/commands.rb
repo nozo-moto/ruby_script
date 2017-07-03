@@ -10,7 +10,7 @@ class Commands
   def weather
     puts "---------------\t weather \t ----------"
     print "| input where\n| "
-    api = WeatherAPI.new(OpenWeatherMap::KEY)
+    api = WeatherAPI.new
     puts api.weather(gets.chomp())[0].description
   end
 end

@@ -5,7 +5,7 @@ class Schedule
     open_tasks
   end
   def open_tasks
-    File.open("tasks.json") do |file|
+    File.open(Command::FILE_NAME, 'r') do |file|
       @tasks = JSON.load(file)
     end
     if @tasks
@@ -16,7 +16,7 @@ class Schedule
     end
   end
   def close_tasks
-    File.open("tasks.json", 'w') do |file|
+    File.open(Command::FILE_NAME, 'w') do |file|
       JSON.dump(@tasks, file)
     end
     puts "save file..."
