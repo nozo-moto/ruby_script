@@ -19,4 +19,7 @@ class Commands
     api = WeatherAPI.new(OpenWeatherMap::KEY, OpenWeatherMap::BASE_URI)
     puts api.weather(gets.chomp())[0].description
   end
+  def twitter
+    a = TwitterAPI.new().main
+  end
 end
