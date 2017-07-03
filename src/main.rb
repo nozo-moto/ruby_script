@@ -7,7 +7,7 @@ require_relative './schedule'
 if __FILE__ == $0
   puts "---------------\t Hello CalenderOfRuby \t ----------"
   loop do
-    print "| commands => #{Command::COMMAND_LIST.to_s}\n| input:\t"
+    print "| commands => #{Command::COMMAND_LIST}\n| input:\t"
     command = Commands.new()
     command_input = gets.chomp()
     case command_input
