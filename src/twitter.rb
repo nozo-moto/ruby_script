@@ -13,7 +13,7 @@ class TwitterAPI
     @tweets = []
     @rest_client.user_timeline(id, :count => 200, :exclude_replies => true, :include_rts => false).each do |tweet|
       # puts tweet.user.to_s + tweet.text.to_s
-      @tweets.push({id: tweet.user.to_s, text: tweet.text.to_s})
+      @tweets.push({id: tweet, text: tweet.text.to_s})
     end
   end
   def save_timeline

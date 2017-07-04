@@ -1,5 +1,5 @@
 module Command
-  COMMAND_LIST = ['weather', 'schedule', 'exit'].freeze
+  COMMAND_LIST = ['weather', 'schedule', 'twitter', 'exit'].freeze
   FILE_NAME = "tasks.json".freeze
   SCHEDULE_COMMAND_LIST = ['add', 'list', 'delete', 'exit'].freeze
 end
