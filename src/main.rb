@@ -7,11 +7,8 @@ require_relative './twitter_id'
 if __FILE__ == $0
   puts "---------------\t Hello CalenderOfRuby \t ----------"
   loop do
-<<<<<<< HEAD
     print "| commands => #{Command::COMMAND_LIST}\n| input: "
-=======
     print "| commands => #{Command::COMMAND_LIST}\n| input:\n"
->>>>>>> master
     command = Commands.new(Command::COMMAND_LIST)
     command_input = gets.chomp()
     case command_input
