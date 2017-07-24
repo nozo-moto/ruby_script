@@ -1,5 +1,5 @@
 module Command
-  COMMAND_LIST = ['weather', 'schedule', 'exit'].freeze
+  COMMAND_LIST = ['weather', 'schedule', 'twitter', 'exit'].freeze
   FILE_NAME = "tasks.json".freeze
   SCHEDULE_COMMAND_LIST = ['add', 'list', 'delete', 'exit'].freeze
 end
@@ -18,5 +18,8 @@ class Commands
     print "| input where\n| "
     api = WeatherAPI.new(OpenWeatherMap::KEY, OpenWeatherMap::BASE_URI)
     puts api.weather(gets.chomp())[0].description
+  end
+  def twitter
+    a = TwitterAPI.new().main
   end
 end
